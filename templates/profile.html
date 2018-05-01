@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    {{super()}}
+<link rel="stylesheet" href="/css/profile_header.css">
+<link rel="stylesheet" href="/css/profile.css">
+{% endblock head %}
+
+{% block content %}
+
+{% include 'profile_header.html' %}
+
+<div id="container-fluid" class="profile-container">
+    <div class="row" style="height: 100%;">
+
+        <div class="col-xs-4 text-center" style="height: 100%;">
+            <p class="lead">Recent Visits</p>
+            <div class="recent-visits-col">
+                {% for visit in recent_visits %}
+                <p id="{{visit}}" style="padding: 10px;"></p>
+                <script>
+                    date = new Date("{{visit}}" * 1000);
+                    d = date.toLocaleDateString();
+                    t = date.toLocaleTimeString();
+                    document.getElementById("{{visit}}").innerHTML = d + " " + t;
+                </script>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-xs-4 text-center" style="height: 100%;">
+            <p class="lead">My Appointments</p>
+            <div class="appointments-col">
+                {% for appointment in appointments %}
+                <p class="lead" style="margin-bottom: 0;">{{appointment.type}}</p>
+                <p id="{{appointment.appointment_time}}" style="margin-bottom: 20px;"></p>
+                <script>
+                    date = new Date("{{appointment.appointment_time}}" * 1000);
+                    d = date.toLocaleDateString();
+                    t = date.toLocaleTimeString();
+                    document.getElementById("{{appointment.appointment_time}}").innerHTML = d + " " + t;
+                </script>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-xs-4 text-center" style="height: 100%;">
+            <p class="lead">Options</p>
+            <div class="options-col">
+                <button class="btn btn-warning" data-toggle="modal" data-target="#appointment-modal">Schedule Appointment</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="appointment-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+        <div class="loginmodal-container text-center">
+            <h1>Nail Xpress</h1>
+            <h3>Schedule an appointment</h3><br>
+          <form method="post" action="/schedule_appointment">
+              <div><select name="type" class="form-control" id="">
+                  <option value="Manicure">Manicure</option>
+                  <option value="Pedicure">Pedicure</option>
+                  <option value="Manicure & Pedicure">Manicure & Pedicure</option>
+              </select></div>
+              <input type="datetime-local" name="date" class="form-control" required>
+            <input type="submit" name="login" class="login loginmodal-submit btn btn-warning" value="Submit" style="width: 100%;">
+          </form>
+
+          <div class="login-help">
+            <!--<a href="#">Register</a> - <a href="#">Forgot Password</a>-->
+          </div>
+        </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block footer %}
+{{super()}}
+{% endblock footer %}

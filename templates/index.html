@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    {{ super() }}
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/index_header.css">
+<link rel="stylesheet" href="/css/modals.css">
+{% endblock head %}
+
+{% block content %}
+
+    {% include 'index_header.html' %}
+
+<div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+  <!-- Overlay -->
+  <div class="overlay"></div>
+
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#bs-carousel" data-slide-to="1"></li>
+    <li data-target="#bs-carousel" data-slide-to="2"></li>
+
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+      <div class="item slides active">
+          <div class="slide-1 img-responsive"></div>
+          <div class="hero">
+              <hgroup>
+                  <h1>Be Mobile</h1>
+                  <h3>With Nail Xpress</h3>
+              </hgroup>
+              <!--<button class="btn btn-hero btn-lg" role="button"></button>-->
+          </div>
+      </div>
+    <div class="item slides">
+      <div class="slide-2 img-responsive"></div>
+      <div class="hero">
+        <hgroup>
+            <h1>Nails That Impress</h1>
+            <h3>Don't be afraid to show off</h3>
+        </hgroup>
+        <!--<button class="btn btn-hero btn-lg" role="button"></button>-->
+      </div>
+    </div>
+    <div class="item slides">
+      <div class="slide-3 img-responsive"></div>
+      <div class="hero">
+        <hgroup>
+            <h1>Here At Nail Xpress</h1>
+            <h3>We are nails</h3>
+        </hgroup>
+        <!--<button class="btn btn-hero btn-lg" role="button">See all features</button>-->
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+{% block footer %}
+    {{ super() }}
+{% endblock footer %}

@@ -1,0 +1,74 @@
+<nav class="navbar navbar-default navbar-fixed-top" id="index_header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Nail Xpress</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/testimonials">Testimonials</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#signup-modal">Sign up</a></li>
+            </ul>
+        </div>
+
+        {% if error %}
+<div class="alert alert-warning alert-dismissible show" role="alert" style="margin-top: 100px;">
+  <strong>Whoops!</strong> That username is already taken.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{% endif %}
+    </div>
+</nav>
+
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+        <div class="loginmodal-container">
+            <h1>Nail Xpress</h1>
+            <h3>Login to Your Account</h3><br>
+          <form method="post" action="/login">
+            <input id="username" type="text" name="username" placeholder="Username" required>
+            <input id="password" type="password" name="password" placeholder="Password" required>
+            <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+          </form>
+
+          <div class="login-help">
+            <!--<a href="#">Register</a> - <a href="#">Forgot Password</a>-->
+          </div>
+        </div>
+    </div>
+  </div>
+
+<div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+        <div class="signupmodal-container">
+            <h1>Nail Xpress</h1>
+            <h3>Create Account</h3><br>
+          <form method="post" action="/signup">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="submit" name="login" class="login loginmodal-submit" value="Signup">
+          </form>
+
+          <div class="login-help">
+            <!--<a href="#">Register</a> - <a href="#">Forgot Password</a>-->
+          </div>
+        </div>
+    </div>
+  </div>
+
+

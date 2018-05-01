@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{{super()}}
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/index_header.css">
+<link rel="stylesheet" href="/css/modals.css">
+{% endblock head %}
+
+{% block content %}
+{% include 'index_header.html' %}
+<div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+  <!-- Overlay -->
+  <div class="overlay"></div>
+
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
+    <!--<li data-target="#bs-carousel" data-slide-to="1"></li>-->
+    <!--<li data-target="#bs-carousel" data-slide-to="2"></li>-->
+
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+      <div class="item slides active">
+          <div id="about-container" class="slide-1 img-responsive"></div>
+          <div class="hero" style="height: 600px; overflow: scroll; overflow-x: hidden;">
+              <hgroup>
+                  {% if success %}
+                        <div class="alert alert-info alert-dismissible show" role="alert" style="">
+                          <strong>Thank you!</strong> Your testimonial has successfully been submitted
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+
+                    {% endif %}
+                  <button class="btn btn-danger" data-toggle="modal" data-target="#testimonial-modal">Submit a Testimonial</button>
+                  {% for testimonial in testimonials %}
+                    <p class="lead">By {{testimonial.author}}</p>
+                    <p>{{testimonial.message}}</p>
+                  {% endfor %}
+              </hgroup>
+
+          </div>
+      </div>
+    <!--<div class="item slides">-->
+      <!--<div class="slide-2 img-responsive"></div>-->
+      <!--<div class="hero">-->
+        <!--<hgroup>-->
+            <!--<h1>Nails That Impress</h1>-->
+            <!--<h3>Don't be afraid to show off</h3>-->
+        <!--</hgroup>-->
+        <!--&lt;!&ndash;<button class="btn btn-hero btn-lg" role="button"></button>&ndash;&gt;-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="item slides">-->
+      <!--<div class="slide-3 img-responsive"></div>-->
+      <!--<div class="hero">-->
+        <!--<hgroup>-->
+            <!--<h1>Here At Nail Xpress</h1>-->
+            <!--<h3>We are nails</h3>-->
+        <!--</hgroup>-->
+        <!--&lt;!&ndash;<button class="btn btn-hero btn-lg" role="button">See all features</button>&ndash;&gt;-->
+      <!--</div>-->
+    <!--</div>-->
+  </div>
+</div>
+
+<div class="modal fade" id="testimonial-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+        <div class="loginmodal-container">
+            <h1>Nail Xpress</h1>
+            <h3>Tell the world about your experience</h3><br>
+          <form method="post" action="/submit_testimonial">
+            <input id="author" type="text" name="author" placeholder="Author" required>
+            <input id="message" type="text" name="message" placeholder="Message" required>
+            <input type="submit" class="login loginmodal-submit" value="Submit Testimonial">
+          </form>
+
+          <div class="login-help">
+            <!--<a href="#">Register</a> - <a href="#">Forgot Password</a>-->
+          </div>
+        </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block footer %}
+{{super()}}
+{% endblock footer %}

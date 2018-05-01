@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{{super()}}
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/index_header.css">
+<link rel="stylesheet" href="/css/modals.css">
+{% endblock head %}
+
+{% block content %}
+{% include 'index_header.html' %}
+<div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+  <!-- Overlay -->
+  <div class="overlay"></div>
+
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
+    <!--<li data-target="#bs-carousel" data-slide-to="1"></li>-->
+    <!--<li data-target="#bs-carousel" data-slide-to="2"></li>-->
+
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+      <div class="item slides active">
+          <div id="about-container" class="slide-1 img-responsive"></div>
+          <div class="hero">
+              <hgroup>
+                  <p class="lead">Nail Xpress brings a moment of peace with our spa services to your home, office,
+                      hospital, care facility or similar location. Contact us to discuss your individual or group
+                      mobile nail care needs. We’d love to answer your questions & explain in greater detail
+                      how our mobile nail service works, based on your individualized needs. Lead us to the most serene area in your space,
+                      supply the water and allow our licensed and professional nail technicians to pamper you. </p>
+              </hgroup>
+              <!--<button class="btn btn-hero btn-lg" role="button"></button>-->
+          </div>
+      </div>
+    <!--<div class="item slides">-->
+      <!--<div class="slide-2 img-responsive"></div>-->
+      <!--<div class="hero">-->
+        <!--<hgroup>-->
+            <!--<h1>Nails That Impress</h1>-->
+            <!--<h3>Don't be afraid to show off</h3>-->
+        <!--</hgroup>-->
+        <!--&lt;!&ndash;<button class="btn btn-hero btn-lg" role="button"></button>&ndash;&gt;-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="item slides">-->
+      <!--<div class="slide-3 img-responsive"></div>-->
+      <!--<div class="hero">-->
+        <!--<hgroup>-->
+            <!--<h1>Here At Nail Xpress</h1>-->
+            <!--<h3>We are nails</h3>-->
+        <!--</hgroup>-->
+        <!--&lt;!&ndash;<button class="btn btn-hero btn-lg" role="button">See all features</button>&ndash;&gt;-->
+      <!--</div>-->
+    <!--</div>-->
+  </div>
+</div>
+{% endblock content %}
+
+{% block footer %}
+{{super()}}
+{% endblock footer %}
